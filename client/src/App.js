@@ -2,7 +2,7 @@ import { useState, useCallback, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API = "http://localhost:5000";
+const API = "https://weather-app-production-48c8.up.railway.app";
 
 const BG_MAP = {
   Clear:        "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=1600&q=80",
