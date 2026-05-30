@@ -296,21 +296,17 @@ body {
   transition: var(--transition);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .dark .location-btn {
   background: var(--d-glass);
   border: 1px solid var(--d-glass-border);
-  color: #38bdf8;   /* visible blue icon in dark mode */
 }
 .light .location-btn {
   background: var(--l-glass);
   border: 1px solid var(--l-glass-border);
-  color: #0284c7;   /* visible blue icon in light mode */
 }
 .location-btn:hover { transform: translateY(-2px) scale(1.05); }
+
 /* ── Error ──────────────────────────────────────────── */
 .error-msg {
   padding: 12px 18px;
