@@ -3,6 +3,7 @@ const cors = require("cors");
 const axios = require("axios");
 
 require("dotenv").config();
+console.log("API_KEY loaded:", process.env.API_KEY ? "YES" : "NO");
 
 const app = express();
 app.use(cors());
