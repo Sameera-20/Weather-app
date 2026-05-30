@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
-require("dotenv").config();
-console.log("API_KEY loaded:", process.env.API_KEY ? "YES" : "NO");
-
+console.log("API_KEY:", process.env.API_KEY ? "FOUND ✅" : "MISSING ❌")
 const app = express();
 app.use(cors());
 app.use(express.json());
