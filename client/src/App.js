@@ -1,7 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import axios from "axios";
 import "./App.css";
-
 const API = "https://weather-app-production-48c8.up.railway.app";
 
 const BG_MAP = {
