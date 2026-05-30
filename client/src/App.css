@@ -788,30 +788,6 @@ body {
   .daily-desc { display: none; }
   .temp-bar { display: none; }
   .daily-day { width: 72px; font-size: 0.75rem; }
-  .daily-max { font-size: 0.82rem; width: 30px; }
-  .daily-min { font-size: 0.82rem; width: 28px; }
-  .daily-pop { font-size: 0.7rem; width: 34px; }
-
-  /* Welcome */
-  .welcome { padding: 40px 16px; }
-  .welcome-icon { font-size: 3rem; }
-  .welcome h2 { font-size: 1.3rem; }
-  .welcome p { font-size: 0.85rem; }
-
-  /* Footer */
-  .footer { font-size: 0.7rem; }
-
-  /* AQI Badge */
-  .aqi-badge { padding: 6px 12px; font-size: 0.78rem; }
-}
-
-/* ── Extra small screens (iPhone SE etc) ────────────── */
-@media (max-width: 380px) {
-  .hero-temp { font-size: 2.5rem; }
-  .hero-city { font-size: 1.2rem; }
-  .tab-btn { font-size: 0.68rem; padding: 8px 4px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .search-btn { padding: 12px 8px; font-size: 0.75rem; }
-  .location-btn { padding: 12px 8px; font-size: 0.85rem; min-width: 38px; }
-  .logo-text { font-size: 1rem; }
+  .tabs { gap: 6px; }
+  .tab-btn { font-size: 0.78rem; padding: 10px 8px; }
 }
