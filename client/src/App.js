@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from "react";
 import axios from "axios";
 import "./App.css";
+
 const API = "https://weather-app-production-48c8.up.railway.app";
 
 const BG_MAP = {
@@ -246,34 +247,20 @@ export default function App() {
           <button className="search-btn" onClick={fetchByCity} disabled={loading}>
             {loading ? "…" : "Search"}
           </button>
-         <button
-  className="location-btn"
-  title="Use my location"
-  onClick={() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => fetchByCoords(pos.coords.latitude, pos.coords.longitude),
-        () => setError("Location access denied.")
-      );
-    }
-  }}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="3" />
-    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-    <circle cx="12" cy="12" r="9" strokeDasharray="2 4" />
-  </svg>
-</button>
+          <button
+            className="location-btn"
+            title="Use my location"
+            onClick={() => {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                  (pos) => fetchByCoords(pos.coords.latitude, pos.coords.longitude),
+                  () => setError("Location access denied.")
+                );
+              }
+            }}
+          >
+            📍
+          </button>
         </div>
 
         {error && <div className="error-msg">⚠️ {error}</div>}
