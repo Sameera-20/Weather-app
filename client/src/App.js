@@ -2,7 +2,7 @@ import { useState, useCallback, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API = "https://weather-app-production-48c8.up.railway.app";
+const API = "/api";
 
 const BG_MAP = {
   Clear:        "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=1600&q=80",
@@ -145,9 +145,9 @@ export default function App() {
     setError("");
     try {
       const [wRes, fRes, aqiRes] = await Promise.allSettled([
-        axios.get(`${API}/weather/coords/${lat}/${lon}`),
-        axios.get(`${API}/forecast/coords/${lat}/${lon}`),
-        axios.get(`${API}/aqi/${lat}/${lon}`),
+        axios.get(`${API}/index?path=weathercoords&lat=${lat}&lon=${lon}`),
+        axios.get(`${API}/index?path=forecastcoords&lat=${lat}&lon=${lon}`),
+        axios.get(`${API}/index?path=aqi&lat=${lat}&lon=${lon}`),
       ]);
       if (wRes.status === "fulfilled") {
         setWeather(wRes.value.data);
@@ -162,23 +162,21 @@ export default function App() {
     }
   }, [updateBackground]);
 
-  // ✅ Auto-detect on mount REMOVED — app starts with welcome screen
-
   const fetchByCity = async () => {
     if (!city.trim()) { inputRef.current?.focus(); return; }
     setLoading(true);
     setError("");
     try {
       const [wRes, fRes] = await Promise.allSettled([
-        axios.get(`${API}/weather/${encodeURIComponent(city.trim())}`),
-        axios.get(`${API}/forecast/${encodeURIComponent(city.trim())}`),
+        axios.get(`${API}/index?path=weather&city=${encodeURIComponent(city.trim())}`),
+        axios.get(`${API}/index?path=forecast&city=${encodeURIComponent(city.trim())}`),
       ]);
       if (wRes.status === "fulfilled") {
         const w = wRes.value.data;
         setWeather(w);
         updateBackground(w.weather[0].main);
         try {
-          const aqiRes = await axios.get(`${API}/aqi/${w.coord.lat}/${w.coord.lon}`);
+          const aqiRes = await axios.get(`${API}/index?path=aqi&lat=${w.coord.lat}&lon=${w.coord.lon}`);
           setAqi(aqiRes.data);
         } catch {}
       } else {
